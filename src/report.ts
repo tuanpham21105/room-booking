@@ -41,7 +41,7 @@ export function printReport(bookings: Booking[], rooms: Room[]): void {
     const clash = clashWith(b, bookings);
     const slot = `${time(b.start)}-${time(b.start + b.hours)}`;
     const warn = clash ? `  ⚠ overlaps ${clash.customer}` : "";
-    return `  ${mark(b.status)} ${slot}  ${b.room.padEnd(7)}${b.customer.padEnd(7)}${vnd(cost(b, rooms)).padStart(11)}${warn}`;
+    return `  ${mark(b.status)}  ${slot}  ${b.id.padEnd(25)}${b.date.padEnd(15)}${b.room.padEnd(7)}${b.customer.padEnd(7)}${vnd(cost(b, rooms)).padStart(11)}${warn}`;
   });
   console.log(lines.join("\n"));
 
