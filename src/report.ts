@@ -19,13 +19,13 @@ export function overlaps(a: Booking, b: Booking): boolean {
 }
 
 // The first earlier, non-cancelled booking that clashes with b (if any).
-function clashWith(b: Booking, all: Booking[]): Booking | undefined {
+export function clashWith(b: Booking, all: Booking[]): Booking | undefined {
   if (b.status === Status.Cancelled) return undefined;
   const earlier = all.slice(0, all.indexOf(b));
   return earlier.find((o) => o.status !== Status.Cancelled && overlaps(o, b));
 }
 
-function mark(status: Status): string {
+export function mark(status: Status): string {
   switch (status) {
     case Status.Confirmed:
       return "✔";
@@ -41,7 +41,7 @@ export function printReport(bookings: Booking[], rooms: Room[]): void {
     const clash = clashWith(b, bookings);
     const slot = `${time(b.start)}-${time(b.start + b.hours)}`;
     const warn = clash ? `  ⚠ overlaps ${clash.customer}` : "";
-    return `  ${mark(b.status)} ${slot}  ${b.room.padEnd(7)}${b.customer.padEnd(7)}${vnd(cost(b, rooms)).padStart(11)}${warn}`;
+    return `  ${mark(b.status)}  ${slot}  ${b.id.padEnd(25)}${b.date.padEnd(15)}${b.room.padEnd(7)}${b.customer.padEnd(7)}${vnd(cost(b, rooms)).padStart(11)}${warn}`;
   });
   console.log(lines.join("\n"));
 
