@@ -128,3 +128,14 @@ git push origin homework/<your-name>
 ```
 
 Open a Pull Request titled `[Homework] <Full name>` and list the creative challenges you chose.
+
+## Homework - Creative
+
+### 1. Challenge 1: JSON Type Guards
+
+- **Problem**: `JSON.parse()` returns untyped data `any`, while TypeScript types are not existed at runtime, can cause wrong types data.
+- **Design**:  Implemented guard functions that validate object structure, fields types, and value constraints.
+
+### 2. Challenge 2: Export the schedule to Markdown
+- **Problem:** Data stored in `JSON` format is difficult to read.
+- **Design:** Implemented the `export <date>` command to write a `Markdown` file containing the list of `Booking` entries for the specified `<date>`, leave `<date>` blank to include all `Booking`.

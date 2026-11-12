@@ -19,13 +19,13 @@ export function overlaps(a: Booking, b: Booking): boolean {
 }
 
 // The first earlier, non-cancelled booking that clashes with b (if any).
-function clashWith(b: Booking, all: Booking[]): Booking | undefined {
+export function clashWith(b: Booking, all: Booking[]): Booking | undefined {
   if (b.status === Status.Cancelled) return undefined;
   const earlier = all.slice(0, all.indexOf(b));
   return earlier.find((o) => o.status !== Status.Cancelled && overlaps(o, b));
 }
 
-function mark(status: Status): string {
+export function mark(status: Status): string {
   switch (status) {
     case Status.Confirmed:
       return "✔";
