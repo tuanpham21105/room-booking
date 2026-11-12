@@ -139,3 +139,8 @@ Open a Pull Request titled `[Homework] <Full name>` and list the creative challe
 ### 2. Challenge 2: Export the schedule to Markdown
 - **Problem:** Data stored in `JSON` format is difficult to read.
 - **Design:** Implemented the `export <date>` command to write a `Markdown` file containing the list of `Booking` entries for the specified `<date>`, leave `<date>` blank to include all `Booking`.
+
+## Homework - Think
+### 1. TypeScript types are not existed at runtime, therefore, `JSON.parse()` returns untyped data `any`, which prevents TypeScript from detecting any errors. My solution is to implement a type guard after parsing the data from a `JSON` file.
+### 2. The overlap check is slow because it has to run `clashWith` for every single booking, and for each one, it must re-check whether any conflicting bookings already exist. V8 is continuously comparing the overlap between bookings.
+### 3. The file output from one of the two terminals is being overwritten by the other.
